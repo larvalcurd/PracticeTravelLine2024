@@ -2,9 +2,12 @@
 
 internal class Program
 {
+    private const int DaysForDelivery = 3;
+
+
     private static bool isOrderCorrect = false;
-    private static DateTime currentDate = DateTime.Now;
-    private static DateTime deliveryDate = currentDate.AddDays( 3 );
+    private static DateTime currentDate = DateTime.Today;
+    private static DateTime deliveryDate = currentDate.AddDays( DaysForDelivery );
     private static string productName;
     private static int productQuantity;
     private static string deliveryAddress;
