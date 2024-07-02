@@ -57,7 +57,7 @@ internal class Program
         Console.Write( "Enter your desired delivery address: " );
         deliveryAddress = Console.ReadLine();
 
-        while ( string.IsNullOrWhiteSpace( ordererName ) )
+        while ( string.IsNullOrWhiteSpace( deliveryAddress ) )
         {
             Console.WriteLine( "Incorrect input..." );
             Console.Write( "Enter your desired delivery address: " );
