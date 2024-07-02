@@ -5,10 +5,10 @@ internal class Program
     private static bool isOrderCorrect = false;
     private static DateTime currentDate = DateTime.Now;
     private static DateTime deliveryDate = currentDate.AddDays( 3 );
-    private static string product;
-    private static string ordererAddress;
+    private static string productName;
+    private static int productQuantity;
+    private static string deliveryAddress;
     private static string ordererName;
-    private static int count;
 
     private static void Main( string[] args )
     {
@@ -19,29 +19,29 @@ internal class Program
             CheckOrderData();
         }
 
-        Console.WriteLine( $"Your order of {count} {product} will be delivered to {ordererAddress} on {deliveryDate.ToString( "dd mmm yyyy" )}" );
+        Console.WriteLine( $"Your order of {productQuantity} {productName} will be delivered to {deliveryAddress} on {deliveryDate.ToString( "dd MMMM yyyy" )}" );
     }
 
     private static void GetOrderData()
     {
         Console.Write( "Enter the product name: " );
-        product = Console.ReadLine();
+        productName = Console.ReadLine();
 
-        while ( string.IsNullOrWhiteSpace( product ) )
+        while ( string.IsNullOrWhiteSpace( productName ) )
         {
             Console.WriteLine( "Incorrect input..." );
             Console.Write( "Enter the product name: " );
-            product = Console.ReadLine();
+            productName = Console.ReadLine();
         }
 
-        Console.Write( $"Enter the desired amount of {product}: " );
-        string inputCount = Console.ReadLine();
+        Console.Write( $"Enter the desired quantity of {productName}: " );
+        string inputQuantity = Console.ReadLine();
 
-        while ( !int.TryParse( inputCount, out count ) || count <= 0 )
+        while ( !int.TryParse( inputQuantity, out productQuantity ) || productQuantity <= 0 )
         {
             Console.WriteLine( "incorrect input..." );
             Console.Write( "enter the desired amount of product: " );
-            inputCount = Console.ReadLine();
+            inputQuantity = Console.ReadLine();
         }
 
         Console.Write( "Enter your name: " );
@@ -55,19 +55,19 @@ internal class Program
         }
 
         Console.Write( "Enter your desired delivery address: " );
-        ordererAddress = Console.ReadLine();
+        deliveryAddress = Console.ReadLine();
 
         while ( string.IsNullOrWhiteSpace( ordererName ) )
         {
             Console.WriteLine( "Incorrect input..." );
             Console.Write( "Enter your desired delivery address: " );
-            ordererAddress = Console.ReadLine();
+            deliveryAddress = Console.ReadLine();
         }
     }
 
     private static void CheckOrderData()
     {
-        Console.WriteLine( $"Hello, {ordererName}, you ordered {count} {product} to {ordererAddress}, is everything correct? [Y/N]" );
+        Console.WriteLine( $"Hello, {ordererName}, you ordered {productQuantity} {productName} to {deliveryAddress}, is everything correct? [Y/N]" );
         string response = Console.ReadLine().ToUpper();
 
         while ( response.Length == 0 || response[ 0 ] != 'Y' && response[ 0 ] != 'N' )
